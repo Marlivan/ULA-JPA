@@ -16,7 +16,15 @@ public class ClienteService {
 
     public ClienteModel guardar(ClienteModel cliente){
 
-        return repository.save(cliente);
+        repository.insertarCliente(
+                cliente.getNombre(),
+                cliente.getApellido(),
+                cliente.getTelefono(),
+                cliente.getCorreo()
+
+        );
+        return repository.findTopByNombreOrderByIdClienteDesc(cliente.getNombre())
+                .orElseThrow(()->new RuntimeException("Error al guardar cliente"));
     }
 
     public List<ClienteModel> listar(){
@@ -24,7 +32,7 @@ public class ClienteService {
         return repository.findByEstado(CODEPOS);
     }
 
-    public ClienteModel buscarPorId(Integer id){
+    public ClienteModel buscarPorId(String id){
 
         return repository.findById(id)
                 .orElseThrow(() ->
@@ -32,7 +40,7 @@ public class ClienteService {
                                 MSG15));
     }
 
-    public ClienteModel actualizar(Integer id,
+    public ClienteModel actualizar(String id,
                               ClienteModel request){
 
         ClienteModel cliente = buscarPorId(id);
@@ -45,7 +53,7 @@ public class ClienteService {
         return repository.save(cliente);
     }
 
-    public void eliminar(Integer id){
+    public void eliminar(String id){
 
         ClienteModel cliente = buscarPorId(id);
 

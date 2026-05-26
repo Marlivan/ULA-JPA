@@ -10,16 +10,8 @@ import java.time.LocalDateTime;
 @Data
 public class ClienteModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "seq_clientes")
-
-    @SequenceGenerator(
-            name = "seq_clientes",
-            sequenceName = "seq_clientes",
-            allocationSize = 1
-    )
     @Column(name = "id_cliente")
-    private Integer idCliente;
+    private String idCliente;
 
     @Column(name = "nombre")
     private String nombre;

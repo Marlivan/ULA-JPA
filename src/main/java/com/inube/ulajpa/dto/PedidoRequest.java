@@ -5,6 +5,6 @@ import java.util.List;
 
 @Data
 public class PedidoRequest {
-    private Integer idCliente;
+    private String idCliente;
     private List<ProductoPedidoDTO> productos;
 }
