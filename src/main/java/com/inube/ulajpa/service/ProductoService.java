@@ -24,7 +24,8 @@ public class ProductoService {
                 producto.getCategoria().getIdCategoria()
         );
 
-        return repository.save(producto);
+        return repository.findTopByNombreOrderByIdProductoDesc(producto.getNombre())
+                .orElseThrow(()-> new RuntimeException("Error al guardar producto"));
     }
 
     public List<ProductoModel> listar(){

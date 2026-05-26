@@ -22,7 +22,7 @@ public interface ProductoRepository extends JpaRepository<ProductoModel, String>
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO productos (nombre, descripcion,precio,stock,idCategoria) " +
-            "VALUES (:nombre, :descripcion, :precio, :stock, :idCategoria)",nativeQuery = true)
+            "VALUES (:nombre, :descripcion, :precio, :stock, :id_categoria)",nativeQuery = true)
     void insertarProducto(@Param("nombre") String nombre,
                          @Param("descripcion") String descripcion,
                          @Param("precio") BigDecimal precio,
