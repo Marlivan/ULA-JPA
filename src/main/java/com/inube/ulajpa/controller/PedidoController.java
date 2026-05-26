@@ -31,7 +31,7 @@ public class PedidoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> cancelarPedido(
-            @PathVariable Integer id){
+            @PathVariable String id){
 
         service.cancelarPedido(id);
 

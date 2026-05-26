@@ -13,16 +13,8 @@ import java.time.LocalDateTime;
 @Data
 public class PedidoModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "seq_pedidos")
-
-    @SequenceGenerator(
-            name = "seq_pedidos",
-            sequenceName = "seq_pedidos",
-            allocationSize = 1
-    )
     @Column(name = "id_pedido")
-    private Integer idPedido;
+    private String idPedido;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")

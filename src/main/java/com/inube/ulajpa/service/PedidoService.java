@@ -95,7 +95,7 @@ public class PedidoService {
     }
 
     @Transactional
-    public void cancelarPedido(Integer idPedido){
+    public void cancelarPedido(String idPedido){
 
         PedidoModel pedido =
                 pedidoRepository.findById(idPedido)

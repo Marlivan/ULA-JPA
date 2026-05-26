@@ -9,16 +9,8 @@ import java.math.BigDecimal;
 @Data
 public class DetallePedidoModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "seq_detalle")
-
-    @SequenceGenerator(
-            name = "seq_detalle",
-            sequenceName = "seq_detalle_pedido",
-            allocationSize = 1
-    )
     @Column(name = "id_detalle")
-    private Integer idDetalle;
+    private String idDetalle;
 
     @ManyToOne
     @JoinColumn(name = "id_pedido")
