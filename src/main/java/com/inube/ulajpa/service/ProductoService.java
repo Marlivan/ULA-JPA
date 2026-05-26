@@ -16,6 +16,14 @@ public class ProductoService {
 
     public ProductoModel guardar(ProductoModel producto){
 
+        repository.insertarProducto(
+                producto.getNombre(),
+                producto.getDescripcion(),
+                producto.getPrecio(),
+                producto.getStock(),
+                producto.getCategoria().getIdCategoria()
+        );
+
         return repository.save(producto);
     }
 
@@ -24,7 +32,7 @@ public class ProductoService {
         return repository.findByEstado(CODEPOS);
     }
 
-    public ProductoModel buscarPorId(Integer id){
+    public ProductoModel buscarPorId(String id){
 
         return repository.findById(id)
                 .orElseThrow(() ->
@@ -32,7 +40,7 @@ public class ProductoService {
                                 MSG16));
     }
 
-    public ProductoModel actualizar(Integer id,
+    public ProductoModel actualizar(String id,
                                ProductoModel request){
 
         ProductoModel producto = buscarPorId(id);
@@ -48,7 +56,7 @@ public class ProductoService {
         return repository.save(producto);
     }
 
-    public ProductoModel actualizarStock(Integer id,
+    public ProductoModel actualizarStock(String id,
                                     Integer stock){
 
         ProductoModel producto = buscarPorId(id);
@@ -58,7 +66,7 @@ public class ProductoService {
         return repository.save(producto);
     }
 
-    public void eliminar(Integer id){
+    public void eliminar(String id){
 
         ProductoModel producto = buscarPorId(id);
 

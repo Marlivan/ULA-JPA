@@ -11,16 +11,8 @@ import java.math.BigDecimal;
 @Data
 public class ProductoModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "seq_productos")
-
-    @SequenceGenerator(
-            name = "seq_productos",
-            sequenceName = "seq_productos",
-            allocationSize = 1
-    )
     @Column(name = "id_producto")
-    private Integer idProducto;
+    private String idProducto;
 
     @Column(name = "nombre")
     private String nombre;

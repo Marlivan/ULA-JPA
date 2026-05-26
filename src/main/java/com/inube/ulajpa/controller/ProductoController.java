@@ -45,7 +45,7 @@ public class ProductoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> buscarPorId(
-            @PathVariable Integer id){
+            @PathVariable String id){
 
         return ResponseEntity.ok(
                 new ApiResponse<>(
@@ -58,7 +58,7 @@ public class ProductoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> actualizar(
-            @PathVariable Integer id,
+            @PathVariable String id,
             @RequestBody ProductoModel producto){
 
         return ResponseEntity.ok(
@@ -72,7 +72,7 @@ public class ProductoController {
 
     @PatchMapping("/{id}/stock")
     public ResponseEntity<ApiResponse<?>> actualizarStock(
-            @PathVariable Integer id,
+            @PathVariable String id,
             @RequestBody Map<String, Integer> request){
 
         return ResponseEntity.ok(
@@ -88,7 +88,7 @@ public class ProductoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> eliminar(
-            @PathVariable Integer id){
+            @PathVariable String id){
 
         service.eliminar(id);
 
