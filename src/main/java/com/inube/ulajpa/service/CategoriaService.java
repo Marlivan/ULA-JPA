@@ -16,7 +16,14 @@ public class CategoriaService {
 
     public CategoriaModel guardar(CategoriaModel categoria){
 
-        return repository.save(categoria);
+        repository.insertarCategoria(
+                categoria.getNombre(),
+                categoria.getDescripcion(),
+                categoria.getEstado()
+        );
+        return repository.findTopByNombreOrderByIdCategoriaDesc(categoria.getNombre())
+                .orElseThrow(() -> new RuntimeException("Error al guardar categoria"));
+
     }
 
     public List<CategoriaModel> listar(){
@@ -24,7 +31,7 @@ public class CategoriaService {
         return repository.findByEstado(CODEPOS);
     }
 
-    public CategoriaModel buscarPorId(Integer id){
+    public CategoriaModel buscarPorId(String id){
 
         return repository.findById(id)
                 .orElseThrow(() ->
@@ -32,7 +39,7 @@ public class CategoriaService {
                                 MSG14));
     }
 
-    public CategoriaModel actualizar(Integer id,
+    public CategoriaModel actualizar(String id,
                                 CategoriaModel request){
 
         CategoriaModel categoria = buscarPorId(id);
@@ -44,7 +51,7 @@ public class CategoriaService {
         return repository.save(categoria);
     }
 
-    public void eliminar(Integer id){
+    public void eliminar(String id){
 
         CategoriaModel categoria = buscarPorId(id);
 

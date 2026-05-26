@@ -44,7 +44,7 @@ public class CategoriaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> buscarPorId(
-            @PathVariable Integer id){
+            @PathVariable String id){
 
         return ResponseEntity.ok(
                 new ApiResponse<>(
@@ -57,7 +57,7 @@ public class CategoriaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> actualizar(
-            @PathVariable Integer id,
+            @PathVariable String id,
             @RequestBody CategoriaModel categoria){
 
         return ResponseEntity.ok(
@@ -71,7 +71,7 @@ public class CategoriaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> eliminar(
-            @PathVariable Integer id){
+            @PathVariable String id){
 
         service.eliminar(id);
 
